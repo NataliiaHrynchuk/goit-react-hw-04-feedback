@@ -1,13 +1,18 @@
 import { Container } from 'components/Reviews/Container.styled';
-import { Button } from 'components/Reviews/Button.styled';
-import { Title } from 'components/Reviews/Title.styled';
-import { Label, Result } from 'components/Reviews/Statistics.styled';
-import { Wrap } from 'components/Reviews/Wrap.styled';
+import { Button } from './Button';
+import { Title } from './Title'; 
+import { Wrap } from './Wrap'; 
+import { StyledWrap } from './Wrap.styled';
 import React from "react";
+// import PropTypes from 'prop-types';
 
 class Reviews extends React.Component {
   static defaultProps = {
     initialValue: 0,
+  }
+
+  static propTypes = {
+    
   }
   state = {
     value: this.props.initialValue,
@@ -39,33 +44,27 @@ class Reviews extends React.Component {
         return (
             <Container>
               <Title>Please leave feedback</Title>
-              <Wrap>
-                <Button type="button" onClick={this.incrementGood}>Good</Button>
-                <Button type="button" onClick={this.incrementNeutral}>Neutral</Button>
-                <Button type="button" onClick={this.incrementBad}>Bad</Button>
-              </Wrap>
+              <StyledWrap>
+                <Button onClick={this.incrementGood}>Good</Button>
+                <Button onClick={this.incrementNeutral}>Neutral</Button>
+                <Button onClick={this.incrementBad}>Bad</Button>
+              </StyledWrap>
               <Title>Statistics:</Title>
-              <Wrap>
-                <Label>Good:</Label>
-                <Result>{this.state.value}</Result>
-              </Wrap>
-              <Wrap>
-                <Label>Neutral:</Label>
-                <Result>{this.state.value}</Result>
-              </Wrap>
-        
-              <Wrap>
-                <Label>Bad:</Label>
-                <Result>{this.state.value}</Result>
-              </Wrap>
-              <Wrap>
-                <Label>Total:</Label>
-                <Result>{this.state.value}</Result>
-              </Wrap>
-              <Wrap>
-                <Label>Positiv feedback:</Label>
-                <Result>{this.state.value}</Result>
-              </Wrap>
+              <Wrap 
+                  typeFeedback='Good'
+                  rating={this.state.value}/> 
+              <Wrap 
+                  typeFeedback='Neutral'
+                  rating={this.state.value}/>                
+              <Wrap
+                  typeFeedback='Bad'
+                  rating={this.state.value}/>        
+              <Wrap
+                  typeFeedback='Total'
+                  rating={this.state.value}/>
+              <Wrap
+                  typeFeedback='Positiv feedback'
+                  rating={this.state.value}/>   
             </Container>
           );
     }
