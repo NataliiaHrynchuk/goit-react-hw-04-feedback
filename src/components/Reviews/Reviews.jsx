@@ -1,4 +1,5 @@
-import { Container } from 'components/Reviews/Container.styled';
+import { Box } from './Box';
+// import { Container } from 'components/Reviews/Container.styled';
 import { Button } from './Button';
 import { Title } from './Title'; 
 import { Wrap } from './Wrap'; 
@@ -42,7 +43,7 @@ class Reviews extends React.Component {
   }
     render() {
         return (
-            <Container>
+          <Box height='100%' pl={4} color='text'>
               <Title>Please leave feedback</Title>
               <StyledWrap>
                 <Button onClick={this.incrementGood}>Good</Button>
@@ -64,8 +65,8 @@ class Reviews extends React.Component {
                   rating={this.state.value}/>
               <Wrap
                   typeFeedback='Positiv feedback'
-                  rating={this.state.value}/>   
-            </Container>
+                  rating={this.state.value}/>            
+            </Box>
           );
     }
 }
