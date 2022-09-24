@@ -2,13 +2,13 @@ import { Feedback} from './FeedBack';
 import { Box } from './Box';
 import PropTypes from 'prop-types';
 
-export const Statistics = ({state, total, positiv}) => {
+export const Statistics = ({options, total, positiv}) => {
     return <Box display="block">
-                {Object.keys(state).map(key => (
+                {Object.keys(options).map(option=> (
                     <Feedback 
-                        key={key}
-                        typeFeedback={key}
-                        onRating={state[key]}/>
+                        key={option}
+                        typeFeedback={option}
+                        onRating={options[option]}/>
                         ))}
                     <Feedback
                         typeFeedback='Total'
@@ -20,7 +20,7 @@ export const Statistics = ({state, total, positiv}) => {
 }
 
 Statistics.propTypes = {
-    state: PropTypes.object,
+    options: PropTypes.object,
     total: PropTypes.number,
     positiv: PropTypes.number,
 }
